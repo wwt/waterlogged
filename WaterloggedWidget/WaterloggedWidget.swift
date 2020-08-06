@@ -34,10 +34,6 @@ struct Provider: TimelineProvider {
         }
     }
     
-    func placeholder(with: Context) -> WaterloggedEntry {
-        WaterloggedEntry(date: Date(), dailyTotal: 0)
-    }
-    
     private func loadWater(completion: @escaping (Double) -> Void) {
         let quantityType = HKQuantityType.quantityType(forIdentifier: .dietaryWater)!
         var interval = DateComponents()
@@ -64,22 +60,11 @@ struct Provider: TimelineProvider {
     }
 }
 
-struct PlaceholderView: View {
-    var body: some View {
-        Text("Implement this")
-    }
-}
-
 struct WidgetEntryView: View {
     @AppStorage("dailyTarget", store: UserDefaults(suiteName: "group.waterlogged")) var dailyTarget: String = ""
     @Environment(\.widgetFamily) var family
-    @State private var dailyTotal = 0.0
     let entry: Provider.Entry
     
-    var healthStore: HKHealthStore
-    var typesToShare: Set<HKSampleType>  = [HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.dietaryWater)!]
-    
-    @ViewBuilder
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [.lightBlue, .purpleBlue]), startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -107,7 +92,7 @@ struct WidgetEntryView: View {
                     .font(.title)
                     .foregroundColor(.darkBlueText)
                 
-            @unknown default:
+            default:
                 Text("This is an unsupported use case.")
             }
         }
@@ -123,7 +108,7 @@ struct WaterloggedWidget: Widget {
             kind: kind,
             provider: Provider()
         ) { entry in
-            WidgetEntryView(entry: entry, healthStore: HKHealthStore())
+            WidgetEntryView(entry: entry)
         }
         .supportedFamilies([.systemMedium])//, .systemSmall])
     }
@@ -131,11 +116,11 @@ struct WaterloggedWidget: Widget {
 
 struct WidgetEntryView_Previews: PreviewProvider {
     static var previews: some View {
-        WidgetEntryView(entry: Provider.Entry(date: Date(), dailyTotal: 20), healthStore: HKHealthStore())
+        WidgetEntryView(entry: Provider.Entry(date: Date(), dailyTotal: 20))
             .previewContext(WidgetPreviewContext(family: .systemLarge))
-        WidgetEntryView(entry: Provider.Entry(date: Date(), dailyTotal: 40), healthStore: HKHealthStore())
+        WidgetEntryView(entry: Provider.Entry(date: Date(), dailyTotal: 40))
             .previewContext(WidgetPreviewContext(family: .systemMedium))
-        WidgetEntryView(entry: Provider.Entry(date: Date(), dailyTotal: 60), healthStore: HKHealthStore())
+        WidgetEntryView(entry: Provider.Entry(date: Date(), dailyTotal: 60))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
