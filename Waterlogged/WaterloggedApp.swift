@@ -8,7 +8,8 @@ struct WaterloggedApp: App {
     var body: some Scene {
         WindowGroup {
             if HKHealthStore.isHealthDataAvailable() {
-                WaterloggedView(model: model)
+                WaterloggedView()
+                    .environmentObject(model)
             } else {
                 Text("Health data is unavailable.")
             }

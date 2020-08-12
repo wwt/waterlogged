@@ -82,7 +82,7 @@ struct WidgetEntryView: View {
             switch family {
             case .systemMedium:
                 HStack {
-                    let target = Double(dailyTarget) ?? 100 // This is nil coalesced specifically for previews to show the progress.
+                    let target = Double(dailyTarget) ?? 180 // This is nil coalesced specifically for previews to show the progress.
                     let progress = CGFloat(entry.dailyTotal / target)
                     CircularProgressView(progress: progress)
                         .padding()

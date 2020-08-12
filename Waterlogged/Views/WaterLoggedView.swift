@@ -3,7 +3,7 @@ import SwiftUI
 import WidgetKit
 
 struct WaterloggedView: View {
-    @ObservedObject var model: WaterloggedModel
+    @EnvironmentObject var model: WaterloggedModel
     @State private var isShowingDetailView = false
     
     var body: some View {
@@ -82,6 +82,6 @@ struct WaterloggedView: View {
 
 struct WaterloggedView_Previews: PreviewProvider {
     static var previews: some View {
-        WaterloggedView(model: WaterloggedModel(HKHealthStore()))
+        WaterloggedView()
     }
 }
