@@ -3,15 +3,14 @@ import SwiftUI
 
 @main
 struct WaterloggedApp: App {
-    // TODO: - Use a StateObject or EnvironmentObject property wrapper here around a model or something.
-    private var healthStore: HKHealthStore?
+    @StateObject var model = WaterloggedModel(HKHealthStore())
     
     var body: some Scene {
         WindowGroup {
             if HKHealthStore.isHealthDataAvailable() {
-                WaterloggedView(healthStore: HKHealthStore())
+                WaterloggedView(model: model)
             } else {
-                HealthDataUnavailableView()
+                Text("Health data is unavailable.")
             }
         }
     }

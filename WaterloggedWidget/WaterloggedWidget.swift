@@ -42,16 +42,20 @@ struct Provider: TimelineProvider {
         let calendar = Calendar.current
         let anchorDate = calendar.date(bySettingHour: 12, minute: 0, second: 0, of: Date())!
         
-        let query = HKStatisticsCollectionQuery(quantityType: quantityType, quantitySamplePredicate: nil, options: .cumulativeSum, anchorDate: anchorDate, intervalComponents: interval)
+        let query = HKStatisticsCollectionQuery(quantityType: quantityType,
+                                                quantitySamplePredicate: nil,
+                                                options: .cumulativeSum,
+                                                anchorDate: anchorDate,
+                                                intervalComponents: interval)
         
         query.initialResultsHandler = { query, results, error in
             let startDate = calendar.startOfDay(for: Date())
             
             var sum = 0.0
             
-            results?.enumerateStatistics(from: startDate, to: Date(), with: { result, _ in
+            results?.enumerateStatistics(from: startDate, to: Date()) { result, _ in
                 sum += result.sumQuantity()?.doubleValue(for: HKUnit.fluidOunceUS()) ?? 0
-            })
+            }
             
             completion(sum)
         }
@@ -67,31 +71,23 @@ struct WidgetEntryView: View {
     
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [.lightBlue, .purpleBlue]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            LinearGradient(gradient: Gradient(colors: [Color.lightBlue.opacity(0.6), Color.purpleBlue.opacity(0.6)]), startPoint: .topLeading, endPoint: .bottomTrailing)
             
             switch family {
-            case .systemSmall:
-                Text("Log water")
-                    .font(.headline)
-                    .foregroundColor(.darkBlueText)
-                
             case .systemMedium:
                 HStack {
-                    let target = Double(dailyTarget) ?? 0.7
-                    CircularProgressView(progress: CGFloat(entry.dailyTotal / target))
+                    let target = Double(dailyTarget) ?? 100 // This is nil coalesced specifically for previews to work. Do not do this in production.
+                    let progress = CGFloat(entry.dailyTotal / target)
+                    CircularProgressView(progress: progress)
                         .padding()
-                    
+                        .frame(width: 160, height: 160)
+                        
                     Text("Log water")
                         .font(.title)
                         .foregroundColor(.darkBlueText)
                 }
                 .padding()
-                
-            case .systemLarge:
-                Text("Log water but even bigger")
-                    .font(.title)
-                    .foregroundColor(.darkBlueText)
-                
+          
             default:
                 Text("This is an unsupported use case.")
             }
@@ -110,17 +106,13 @@ struct WaterloggedWidget: Widget {
         ) { entry in
             WidgetEntryView(entry: entry)
         }
-        .supportedFamilies([.systemMedium])//, .systemSmall])
+        .supportedFamilies([.systemMedium])
     }
 }
 
 struct WidgetEntryView_Previews: PreviewProvider {
     static var previews: some View {
-        WidgetEntryView(entry: Provider.Entry(date: Date(), dailyTotal: 20))
-            .previewContext(WidgetPreviewContext(family: .systemLarge))
         WidgetEntryView(entry: Provider.Entry(date: Date(), dailyTotal: 40))
             .previewContext(WidgetPreviewContext(family: .systemMedium))
-        WidgetEntryView(entry: Provider.Entry(date: Date(), dailyTotal: 60))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
