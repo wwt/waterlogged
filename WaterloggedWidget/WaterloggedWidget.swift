@@ -71,23 +71,39 @@ struct WidgetEntryView: View {
     
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color.lightBlue.opacity(0.6), Color.purpleBlue.opacity(0.6)]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            LinearGradient(
+                gradient: Gradient(
+                    colors: [Color.lightBlue.opacity(0.6), Color.purpleBlue.opacity(0.6)]
+                ),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
             
             switch family {
             case .systemMedium:
                 HStack {
-                    let target = Double(dailyTarget) ?? 100 // This is nil coalesced specifically for previews to work. Do not do this in production.
+                    let target = Double(dailyTarget) ?? 100 // This is nil coalesced specifically for previews to show the progress.
                     let progress = CGFloat(entry.dailyTotal / target)
                     CircularProgressView(progress: progress)
                         .padding()
                         .frame(width: 160, height: 160)
+                    
+                    VStack {
+                        let total = String(format: "%.0f", entry.dailyTotal)
+                        Text("\(total) fl oz drank today")
+                            .font(.headline)
+                            .foregroundColor(.darkBlueText)
                         
-                    Text("Log water")
-                        .font(.title)
-                        .foregroundColor(.darkBlueText)
+                        if entry.dailyTotal < target {
+                            let remaining = String(format: "%.0f", target - entry.dailyTotal)
+                            Text("Drink \(remaining) more fl oz to meet goal")
+                                .font(.subheadline)
+                                .foregroundColor(.darkBlueText)
+                        }
+                    }
                 }
                 .padding()
-          
+                
             default:
                 Text("This is an unsupported use case.")
             }
