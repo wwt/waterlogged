@@ -20,7 +20,7 @@ struct DailyTargetView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(LinearGradient(gradient: Gradient(colors: [.lightBlue, .purpleBlue]), startPoint: .topLeading, endPoint: .bottomTrailing))
-        .edgesIgnoringSafeArea(.all)
+        .ignoresSafeArea(.container)
     }
 }
 
