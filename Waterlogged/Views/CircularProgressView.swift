@@ -18,9 +18,9 @@ struct CircularProgressView: View {
                 .stroke(
                     LinearGradient(gradient: Gradient(colors: colors), startPoint: .topTrailing, endPoint: .bottomLeading),
                     style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round, miterLimit: .infinity, dash: [20, 0], dashPhase: 0)
-            )
-            .rotationEffect(.degrees(-90))
-            .shadow(color: Color.darkBlueText.opacity(0.1), radius: 3, x: 0, y: 3)
+                )
+                .rotationEffect(.degrees(-90))
+                .shadow(color: Color.darkBlueText.opacity(0.1), radius: 3, x: 0, y: 3)
             
             Text("\(formattedProgress)%")
                 .font(.subheadline)
@@ -31,11 +31,18 @@ struct CircularProgressView: View {
 }
 
 struct CircularProgressView_Previews: PreviewProvider {
-    @State static var progress: CGFloat = 0.70
+    @State static var progress: CGFloat = 0.7
     
     static var previews: some View {
+        ZStack {
+            Color.black
+                .edgesIgnoringSafeArea(.all)
+            CircularProgressView(progress: progress)
+                .frame(width: 300, height: 300)
+                .environment(\.colorScheme, .dark)
+        }
+        
         CircularProgressView(progress: progress)
             .frame(width: 300, height: 300)
-            .environment(\.colorScheme, .dark)
     }
 }

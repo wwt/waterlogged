@@ -12,11 +12,8 @@ final class WaterloggedModel: ObservableObject {
     private let typesToShare: Set<HKSampleType>  = [HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.dietaryWater)!]
     
     var remainingWater: Double {
-        guard let dailyTarget = Double(dailyTarget) else { return 0 }
-        
-        if dailyTotal >= dailyTarget {
-            return 0
-        }
+        guard let dailyTarget = Double(dailyTarget),
+              dailyTotal >= dailyTarget else { return 0 }
         
         return dailyTarget - dailyTotal
     }
@@ -54,7 +51,6 @@ final class WaterloggedModel: ObservableObject {
                     self.dailyTotal = sum
                     self.progress = CGFloat(self.dailyTotal / (Double(self.dailyTarget) ?? 1))
                 }
-                print("Time: \(result.startDate), \(sum)")
             }
         }
         

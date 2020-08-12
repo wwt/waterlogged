@@ -6,14 +6,17 @@ struct WaterloggedView: View {
     @ObservedObject var model: WaterloggedModel
     @State private var isShowingDetailView = false
     
-    let fluidOunces = [4, 8, 12, 16, 20, 24, 28, 32, 36]
-    
     var body: some View {
         NavigationView {
             VStack {
                 if !model.dailyTarget.isEmpty {
                     Text("Daily Target: \(model.dailyTarget) fl oz")
                         .font(.title)
+                        .foregroundColor(.darkBlueText)
+                        .padding()
+                } else {
+                    Text("Set a target to start tracking your water")
+                        .font(.headline)
                         .foregroundColor(.darkBlueText)
                         .padding()
                 }
@@ -33,29 +36,38 @@ struct WaterloggedView: View {
                         .padding()
                 }
                 
-                Text("How much water did you drink (fl oz)?")
-                    .font(.headline)
-                    .foregroundColor(.darkBlueText)
-                    .padding(.top)
-                
-                TextField("Enter amount in fl oz...", text: $model.amount) {
-                    model.logWater()
+                VStack {
+                    Text("How much water did you drink (fl oz)?")
+                        .font(.headline)
+                        .foregroundColor(.darkBlueText)
+                    
+                    TextField("Enter amount in fl oz...", text: $model.amount) {
+                        model.logWater()
+                    }
+                    .padding()
+                    .background(Color(.displayP3, white: 1.0, opacity: 0.4))
+                    .cornerRadius(12)
                 }
-                .padding()
-                .background(Color(.displayP3, white: 1.0, opacity: 0.4))
-                .cornerRadius(12)
                 .padding()
             }
             .onAppear {
                 model.loadWater()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(LinearGradient(gradient: Gradient(colors: [Color.lightBlue.opacity(0.6), Color.purpleBlue.opacity(0.6)]), startPoint: .topLeading, endPoint: .bottomTrailing))
-            .edgesIgnoringSafeArea(.all)
+            .background(
+                LinearGradient(
+                    gradient: Gradient(
+                        colors: [Color.lightBlue.opacity(0.6), Color.purpleBlue.opacity(0.6)]
+                    ),
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+            )
+            .ignoresSafeArea(.container)
             .navigationBarTitle("Waterlogged")
-            .sheet(isPresented: $isShowingDetailView, content: {
+            .sheet(isPresented: $isShowingDetailView) {
                 DailyTargetView(dailyTarget: $model.dailyTarget)
-            })
+            }
             .navigationBarItems(trailing:
                 Button("Set Target") {
                     isShowingDetailView.toggle()
