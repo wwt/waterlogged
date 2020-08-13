@@ -8,35 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		AD234C6424D10234004407FB /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD234C6324D10234004407FB /* HealthKit.framework */; };
-		AD234C6D24D1FB01004407FB /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD234C6C24D1FB01004407FB /* WidgetKit.framework */; };
-		AD234C6F24D1FB01004407FB /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD234C6E24D1FB01004407FB /* SwiftUI.framework */; };
-		AD234C7224D1FB01004407FB /* WaterloggedWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD234C7124D1FB01004407FB /* WaterloggedWidget.swift */; };
-		AD234C7424D1FB03004407FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD234C7324D1FB03004407FB /* Assets.xcassets */; };
-		AD234C7824D1FB03004407FB /* WaterloggedWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AD234C6B24D1FB01004407FB /* WaterloggedWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		AD234C7D24D207FA004407FB /* WaterLoggedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64D5F6A24CFA6340085CE44 /* WaterLoggedView.swift */; };
 		AD42FC1224E44897006BBA7D /* WaterloggedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD42FC1124E44897006BBA7D /* WaterloggedModel.swift */; };
-		AD42FC1424E448F5006BBA7D /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDDB66D24DB0CFC0067E452 /* Color+Extension.swift */; };
-		AD42FC1524E44923006BBA7D /* WaterloggedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD42FC1124E44897006BBA7D /* WaterloggedModel.swift */; };
 		AD75ACDC24D89C1D00217674 /* DailyTargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD75ACDB24D89C1D00217674 /* DailyTargetView.swift */; };
-		AD75ACDD24D89F4C00217674 /* DailyTargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD75ACDB24D89C1D00217674 /* DailyTargetView.swift */; };
 		ADDDB66E24DB0CFC0067E452 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDDB66D24DB0CFC0067E452 /* Color+Extension.swift */; };
 		ADDDB67124DB109F0067E452 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDDB67024DB109F0067E452 /* CircularProgressView.swift */; };
-		ADDDB67224DB15B00067E452 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDDB67024DB109F0067E452 /* CircularProgressView.swift */; };
 		B64D5F6924CFA6340085CE44 /* WaterloggedApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64D5F6824CFA6340085CE44 /* WaterloggedApp.swift */; };
 		B64D5F6B24CFA6340085CE44 /* WaterLoggedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64D5F6A24CFA6340085CE44 /* WaterLoggedView.swift */; };
 		B64D5F6D24CFA6350085CE44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B64D5F6C24CFA6350085CE44 /* Assets.xcassets */; };
 		B64D5F7024CFA6350085CE44 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B64D5F6F24CFA6350085CE44 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		AD234C7624D1FB03004407FB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B64D5F5D24CFA6340085CE44 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AD234C6A24D1FB01004407FB;
-			remoteInfo = WaterloggedWidgetExtension;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		AD234C7C24D1FB03004407FB /* Embed App Extensions */ = {
@@ -45,7 +25,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				AD234C7824D1FB03004407FB /* WaterloggedWidgetExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -55,17 +34,12 @@
 /* Begin PBXFileReference section */
 		AD234C6124D10234004407FB /* Waterlogged.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Waterlogged.entitlements; sourceTree = "<group>"; };
 		AD234C6324D10234004407FB /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
-		AD234C6B24D1FB01004407FB /* WaterloggedWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WaterloggedWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD234C6C24D1FB01004407FB /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		AD234C6E24D1FB01004407FB /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		AD234C7124D1FB01004407FB /* WaterloggedWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterloggedWidget.swift; sourceTree = "<group>"; };
-		AD234C7324D1FB03004407FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AD234C7524D1FB03004407FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD42FC1124E44897006BBA7D /* WaterloggedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterloggedModel.swift; sourceTree = "<group>"; };
 		AD75ACDB24D89C1D00217674 /* DailyTargetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTargetView.swift; sourceTree = "<group>"; };
 		ADDDB66D24DB0CFC0067E452 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		ADDDB67024DB109F0067E452 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
-		ADDDB67324DB46ED0067E452 /* WaterloggedWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WaterloggedWidgetExtension.entitlements; sourceTree = "<group>"; };
 		B64D5F6524CFA6340085CE44 /* Waterlogged.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Waterlogged.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B64D5F6824CFA6340085CE44 /* WaterloggedApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterloggedApp.swift; sourceTree = "<group>"; };
 		B64D5F6A24CFA6340085CE44 /* WaterLoggedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterLoggedView.swift; sourceTree = "<group>"; };
@@ -75,15 +49,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		AD234C6824D1FB01004407FB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AD234C6F24D1FB01004407FB /* SwiftUI.framework in Frameworks */,
-				AD234C6D24D1FB01004407FB /* WidgetKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B64D5F6224CFA6340085CE44 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -103,16 +68,6 @@
 				AD234C6E24D1FB01004407FB /* SwiftUI.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		AD234C7024D1FB01004407FB /* WaterloggedWidget */ = {
-			isa = PBXGroup;
-			children = (
-				AD234C7124D1FB01004407FB /* WaterloggedWidget.swift */,
-				AD234C7324D1FB03004407FB /* Assets.xcassets */,
-				AD234C7524D1FB03004407FB /* Info.plist */,
-			);
-			path = WaterloggedWidget;
 			sourceTree = "<group>";
 		};
 		AD42FC1024E44845006BBA7D /* Utilities */ = {
@@ -139,9 +94,7 @@
 		B64D5F5C24CFA6340085CE44 = {
 			isa = PBXGroup;
 			children = (
-				ADDDB67324DB46ED0067E452 /* WaterloggedWidgetExtension.entitlements */,
 				B64D5F6724CFA6340085CE44 /* Waterlogged */,
-				AD234C7024D1FB01004407FB /* WaterloggedWidget */,
 				B64D5F6624CFA6340085CE44 /* Products */,
 				AD234C6224D10234004407FB /* Frameworks */,
 			);
@@ -151,7 +104,6 @@
 			isa = PBXGroup;
 			children = (
 				B64D5F6524CFA6340085CE44 /* Waterlogged.app */,
-				AD234C6B24D1FB01004407FB /* WaterloggedWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -179,23 +131,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AD234C6A24D1FB01004407FB /* WaterloggedWidgetExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AD234C7924D1FB03004407FB /* Build configuration list for PBXNativeTarget "WaterloggedWidgetExtension" */;
-			buildPhases = (
-				AD234C6724D1FB01004407FB /* Sources */,
-				AD234C6824D1FB01004407FB /* Frameworks */,
-				AD234C6924D1FB01004407FB /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = WaterloggedWidgetExtension;
-			productName = WaterloggedWidgetExtension;
-			productReference = AD234C6B24D1FB01004407FB /* WaterloggedWidgetExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		B64D5F6424CFA6340085CE44 /* Waterlogged */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B64D5F7424CFA6350085CE44 /* Build configuration list for PBXNativeTarget "Waterlogged" */;
@@ -208,7 +143,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				AD234C7724D1FB03004407FB /* PBXTargetDependency */,
 			);
 			name = Waterlogged;
 			productName = Waterlogged;
@@ -224,9 +158,6 @@
 				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
-					AD234C6A24D1FB01004407FB = {
-						CreatedOnToolsVersion = 12.0;
-					};
 					B64D5F6424CFA6340085CE44 = {
 						CreatedOnToolsVersion = 12.0;
 					};
@@ -246,20 +177,11 @@
 			projectRoot = "";
 			targets = (
 				B64D5F6424CFA6340085CE44 /* Waterlogged */,
-				AD234C6A24D1FB01004407FB /* WaterloggedWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		AD234C6924D1FB01004407FB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AD234C7424D1FB03004407FB /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B64D5F6324CFA6340085CE44 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -272,19 +194,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		AD234C6724D1FB01004407FB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AD234C7D24D207FA004407FB /* WaterLoggedView.swift in Sources */,
-				AD42FC1424E448F5006BBA7D /* Color+Extension.swift in Sources */,
-				AD234C7224D1FB01004407FB /* WaterloggedWidget.swift in Sources */,
-				AD42FC1524E44923006BBA7D /* WaterloggedModel.swift in Sources */,
-				AD75ACDD24D89F4C00217674 /* DailyTargetView.swift in Sources */,
-				ADDDB67224DB15B00067E452 /* CircularProgressView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B64D5F6124CFA6340085CE44 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -300,59 +209,7 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		AD234C7724D1FB03004407FB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AD234C6A24D1FB01004407FB /* WaterloggedWidgetExtension */;
-			targetProxy = AD234C7624D1FB03004407FB /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
-		AD234C7A24D1FB03004407FB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = WaterloggedWidgetExtension.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K9T2L78MAL;
-				INFOPLIST_FILE = WaterloggedWidget/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zachfrew.Waterlogged.WaterloggedWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		AD234C7B24D1FB03004407FB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = WaterloggedWidgetExtension.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K9T2L78MAL;
-				INFOPLIST_FILE = WaterloggedWidget/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zachfrew.Waterlogged.WaterloggedWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		B64D5F7224CFA6350085CE44 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -520,15 +377,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AD234C7924D1FB03004407FB /* Build configuration list for PBXNativeTarget "WaterloggedWidgetExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AD234C7A24D1FB03004407FB /* Debug */,
-				AD234C7B24D1FB03004407FB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		B64D5F6024CFA6340085CE44 /* Build configuration list for PBXProject "Waterlogged" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
