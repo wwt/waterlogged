@@ -9,17 +9,24 @@ struct WaterloggedEntry: TimelineEntry {
 
 struct Provider: TimelineProvider {
     private let healthStore = HKHealthStore()
-    private let typesToShare: Set<HKSampleType> = [HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.dietaryWater)!]
     
-    func snapshot(with context: Context, completion: @escaping (WaterloggedEntry) -> ()) {
+    func snapshot(
+        with context: Context,
+        completion: @escaping (WaterloggedEntry) -> Void
+    ) {
         let entry = WaterloggedEntry(date: Date(), dailyTotal: 0)
         completion(entry)
     }
     
-    func timeline(with context: Context, completion: @escaping (Timeline<WaterloggedEntry>) -> ()) {
+    func timeline(
+        with context: Context,
+        completion: @escaping (Timeline<WaterloggedEntry>) -> Void
+    ) {
         let currentDate = Date()
         let refreshDate = Calendar.current.date(byAdding: .hour, value: 1, to: currentDate)!
-        let status = healthStore.authorizationStatus(for: HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.dietaryWater)!)
+        let waterIdentifier = HKQuantityTypeIdentifier.dietaryWater
+        let waterSampleType = HKQuantityType.quantityType(forIdentifier: waterIdentifier)!
+        let status = healthStore.authorizationStatus(for: waterSampleType)
         
         if status == .sharingAuthorized {
             loadWater { dailyTotal in
@@ -65,7 +72,10 @@ struct Provider: TimelineProvider {
 }
 
 struct WidgetEntryView: View {
-    @AppStorage("dailyTarget", store: UserDefaults(suiteName: "group.waterlogged")) var dailyTarget: String = ""
+    @AppStorage(
+        "dailyTarget",
+        store: UserDefaults(suiteName: "group.waterlogged")
+    ) var dailyTarget: String = ""
     @Environment(\.widgetFamily) var family
     let entry: Provider.Entry
     
@@ -73,7 +83,10 @@ struct WidgetEntryView: View {
         ZStack {
             LinearGradient(
                 gradient: Gradient(
-                    colors: [Color.lightBlue.opacity(0.6), Color.purpleBlue.opacity(0.6)]
+                    colors: [
+                        Color.lightBlue.opacity(0.6),
+                        Color.purpleBlue.opacity(0.6)
+                    ]
                 ),
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
@@ -82,7 +95,8 @@ struct WidgetEntryView: View {
             switch family {
             case .systemMedium:
                 HStack {
-                    let target = Double(dailyTarget) ?? 180 // This is nil coalesced specifically for previews to show the progress.
+                    // This is nil coalesced specifically for previews to show the progress.
+                    let target = Double(dailyTarget) ?? 180
                     let progress = CGFloat(entry.dailyTotal / target)
                     CircularProgressView(progress: progress)
                         .padding()
@@ -96,6 +110,7 @@ struct WidgetEntryView: View {
                         
                         if entry.dailyTotal < target {
                             let remaining = String(format: "%.0f", target - entry.dailyTotal)
+                            
                             Text("Drink \(remaining) more fl oz to meet goal")
                                 .font(.subheadline)
                                 .foregroundColor(.darkBlueText)
